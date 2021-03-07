@@ -1,0 +1,42 @@
+.navigation-bar {
+    color: white;
+    text-decoration: none;
+}
+.content-with-background-color{
+    background-color:#008000;
+    text-align: center;
+    font-style: normal;
+    font-size: large;
+    font-weight: normal;
+    border: green 10px;
+    padding: 200px 200px 200px 200px;
+    color: whitesmoke;
+    opacity: .8;
+    margin: 1px 1px 1px 1px ;
+
+}
+.navigation-bar-right{
+    flex:1;
+    transition: font-size 2s;
+    background-color: rgb(12, 51, 4);
+}
+
+.navigation-bar {
+    background-color:green;
+    color: white;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.content-with-background-color1{
+    background-color: rgb(114, 235, 114);
+    border: rgb(241, 237, 237);
+    text-align: center;
+    font-size: large;
+    border: 10px, 10px, 5px, 5px;
+    padding: 200px 200px 200px 200px;
+    opacity: .8;
+    margin: 1px 1px 1px 1px ;
+    
+    
+}
