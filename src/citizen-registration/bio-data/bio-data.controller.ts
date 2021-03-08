@@ -2,7 +2,6 @@ import { Controller, Get, Post, Body, Put, Param, Delete, Patch } from '@nestjs/
 import { BioDataService } from './bio-data.service';
 import { CreateBioDatumDto } from './dto/create-bio-datum.dto';
 import { UpdateBioDatumDto } from './dto/update-bio-datum.dto';
-import { LinkedIdentity } from '../linked-identity/entities/linked-identity.entity';
 
 @Controller('bio-data')
 export class BioDataController {
