@@ -47,3 +47,46 @@ export class BioDataService {
     return this.biodataRepository.save(newbiodata) }
 }
 
+async findOne(NIN: number) {
+  //return `This action returns a #${id} student`;
+  return await this.studentRepository.findOne(id);
+}
+
+async update(NIN: number, UpdateBioDatumDto:UpdateBioDatumDto) {
+  //return `This action updates a #${id} student`;
+  return await this.biodataRepository.update(NIN, updateBioDatumDto);
+}
+
+async remove(id: number) {
+  //return `This action removes a #${id} student`;
+  return await this.studentRepository.delete(id);
+}
+
+/* Work on relationships */
+async setUserById(studentId: number, userId: number) {
+  try {
+    return await this.studentRepository.createQueryBuilder()
+      .relation(Student, "user")
+      .of(studentId)
+      .set(userId)
+  } catch (error) {
+    throw new HttpException({
+      status: HttpStatus.INTERNAL_SERVER_ERROR,
+      error: `There was a problem setting user for student: ${error.message}`,
+    }, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+}
+
+async unsetUserById(studentId: number) {
+  try {
+    return await this.studentRepository.createQueryBuilder()
+      .relation(Student, "user")
+      .of(studentId)
+      .set(null)
+  } catch (error) {
+    throw new HttpException({
+      status: HttpStatus.INTERNAL_SERVER_ERROR,
+      error: `There was a problem unsetting user for student: ${error.message}`,
+    }, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+}
