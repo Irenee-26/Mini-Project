@@ -1,11 +1,12 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Patch } from '@nestjs/common';
 import { BioDataService } from './bio-data.service';
 import { CreateBioDatumDto } from './dto/create-bio-datum.dto';
 import { UpdateBioDatumDto } from './dto/update-bio-datum.dto';
+import { LinkedIdentity } from '../linked-identity/entities/linked-identity.entity';
 
 @Controller('bio-data')
 export class BioDataController {
-  constructor(private readonly bioDataService: BioDataService) {}
+  constructor(private readonly bioDataService: BioDataService) { }
 
   @Post()
   create(@Body() createBioDatumDto: CreateBioDatumDto) {
@@ -17,18 +18,26 @@ export class BioDataController {
     return this.bioDataService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bioDataService.findOne(+id);
+  @Get(':NIN')
+  findOne(@Param('NIN') NIN: string) {
+    return this.bioDataService.findOne(+NIN);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateBioDatumDto: UpdateBioDatumDto) {
-    return this.bioDataService.update(+id, updateBioDatumDto);
+  @Put(':NIN')
+  update(@Param('NIN') NIN: string, @Body() updateBioDatumDto: UpdateBioDatumDto) {
+    return this.bioDataService.update(+NIN, updateBioDatumDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.bioDataService.remove(+id);
+  @Delete(':NIN')
+  remove(@Param('NIN') NIN: string) {
+    return this.bioDataService.remove(+NIN);
+  }
+  @Patch(':biodataNIN/linkedidentity/linkedidentityNIN')
+  setLinkedIdentityByNIN(@Param('biodataNIN') biodataNIN: number, @Param('linkedidentityNIN') linkedidentityNIN: number) {
+    return this.bioDataService.setLinkedIdentityById(biodataNIN, linkedidentityNIN);
+  }
+  @Delete('::biodataNIN/linkedidentity')
+  unsetLinkedIdentityByNIN(@Param('biodataNIN') biodataNIN: number) {
+    return this.bioDataService.unsetLinkedIdentityByNIN(biodataNIN);
   }
 }
