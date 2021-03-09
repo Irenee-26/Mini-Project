@@ -4,7 +4,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "1234",
-    "database": "miniproject",
+    "database": "Irene",
     "entities": [
         "dist/**/*.entity{.ts,.js}"
     ],
