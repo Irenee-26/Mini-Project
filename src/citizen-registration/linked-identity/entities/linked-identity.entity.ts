@@ -3,7 +3,11 @@ import { BioDatum } from "src/citizen-registration/bio-data/entities/bio-datum.e
 
 @Entity()
 export class LinkedIdentity {
+    
     @PrimaryGeneratedColumn() 
+    Id:number;
+
+    @Column()
     NIN: number;
 
     @Column() 

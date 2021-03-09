@@ -1,5 +1,5 @@
 import { CreateLinkedIdentityDto } from "src/citizen-registration/linked-identity/dto/create-linked-identity.dto";
-import { ModeOfEntry } from "src/citizen-registration/citizenRegistration.types";
+
 export class CreateBioDatumDto {
   linkedidentityRepository(linkedidentityRepository: any) {
     throw new Error("Method not implemented.");

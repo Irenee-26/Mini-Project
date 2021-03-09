@@ -6,8 +6,10 @@ import { LinkedIdentity } from "src/citizen-registration/linked-identity/entitie
 export class BioDatum {
 
 @PrimaryGeneratedColumn() 
-NIN: number;
+Id
 
+@Column()
+NIN: number;
 
 @Column() 
 firstName: string;
